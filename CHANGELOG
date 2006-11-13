@@ -1,3 +1,7 @@
+version 0.0.4  25 Oct 2002
+   - provide stub symbol kdb2_dbopen, which recent versions of libkdb5
+     expect the application to provide (possibly a bug)
+
 version 0.0.3  11 Sep 2001
    - make sure we use the DEFAULT_KEYTAB define, since we have it available.
    - add support for min_uid option, submitted by Gordon Tetlow
