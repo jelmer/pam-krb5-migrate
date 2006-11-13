@@ -1,0 +1,47 @@
+.TH pam_krb5_migrate 5 "13 November 2006"
+.SH NAME
+pam_krb5_migrate \- Kerberos 5 Migration PAM module
+.SH SYNOPSIS
+.LP
+.B /lib/security/pam_krb5_migrate.so.1
+.LP
+.SH DESCRIPTION
+.IX "pam_krb5_migrate" "" "\fLpam_krb5_migrate\fP \(em Kerberos 5 Migration PAM module"
+.PP
+.BR pam_krb5_migrate 
+is a stackable authentication module that takes a username
+and password from an earlier module in the stack, and attempts to
+transparently add them to a Kerberos realm using the Kerberos 5 kadmin
+service.
+.PP
+The module can be used to ease the administrative burdens of migrating
+a large installed userbase from pre-existing authentication methods to a
+Kerberos-based setup.
+.SH OPTIONS
+The following options may be passed to the authentication module:
+.TP 15
+.B debug
+.BR syslog (3)
+debugging information at
+.SB LOG_DEBUG
+level.
+.TP
+.B keytab=<file>
+use alternate keytab for authentication (default is /etc/security/pam_krb5.keytab).
+.TP
+.B min_uid=<uid>
+don't add principals for uid's lower than <uid>.  (default is 100)
+.TP
+.B principal=<name>
+use the key for <name> instead of the default pam_migrate/<hostname> key
+.TP
+.B realm=<REALM> 
+update the database for a realm other than the default realm.
+.SH AUTHOR
+pam_krb5_migrate was written by Steve Langasek <vorlon@netexpress.net>. This 
+manpage was assembled by Jelmer Vernooij <jelmer@samba.org>.
+.SH SEE ALSO
+.BR kadmin (1),
+.BR pam_krb5 (5),
+.BR pam (3),
+.BR libpam (4).
