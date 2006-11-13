@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS += -I/usr/kerberos/include
+CFLAGS += `krb5-config --cflags krb5 kadm-client`
 LDFLAGS += -Bsymbolic -x -shared
 
 # Uncomment these lines to build the module with local db support.
@@ -8,10 +8,8 @@ LDFLAGS += -Bsymbolic -x -shared
 
 # Uncomment these lines to build the module with remote kadmin support.
 KLOCAL =
-LIBS   = -lkadm5clnt
-
-LIBS  += -lgssrpc -lgssapi_krb5 -lkdb5 -lkrb5 -lk5crypto
-LIBS  += -ldyn -lcom_err -lpam -ldl -lc
+LIBS  += `krb5-config --libs krb5 kadm-client`
+LIBS  += -lpam -ldl
 
 all: pam_krb5_migrate.so
 
@@ -27,3 +25,5 @@ install: all
 
 clean:
 	-rm *.o *.so
+
+distclean: clean
