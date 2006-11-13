@@ -35,6 +35,12 @@
 #define DEFAULT_KEYTAB	"/etc/security/pam_krb5.keytab"
 #define MIN_UID 100
 
+/* Stub symbol, never used, that's needed when dlopen()ing libkdb5.so. */
+void kdb2_dbopen()
+{
+
+}
+
 /* Cleanup function for pam data. */
 static void _cleanup(pam_handle_t * pamh, void *x, int error_status)
 {
