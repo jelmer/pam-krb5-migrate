@@ -1,3 +1,9 @@
+version 0.0.5  13 Nov 2006
+   - new maintainer (Jelmer Vernooij <jelmer@samba.org>)
+   - add manual page
+   - fix build with heimdal Kerberos
+   - use krb5-config utility for determining CFLAGS and LIBS
+
 version 0.0.4  25 Oct 2002
    - provide stub symbol kdb2_dbopen, which recent versions of libkdb5
      expect the application to provide (possibly a bug)

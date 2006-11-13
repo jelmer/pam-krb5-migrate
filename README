@@ -23,5 +23,8 @@ principal=<name>      use the key for <name> instead of the default
 realm=<REALM>         update the database for a realm other than the
                          default realm.
 
-Please send questions and comments (and especially bugfixes) to Steve
-Langasek <vorlon@netexpress.net>
+pam_krb5_migrate was written by Steve Langasek <vorlon@netexpress.net>.
+
+Please send questions and comments (and especially bugfixes) to the current 
+maintainer, Jelmer Vernooij <jelmer@samba.org>.
+
