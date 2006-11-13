@@ -1,10 +1,10 @@
 /*
    Kerberos 5 migration module
-   Version 0.0.1.
+   Version 0.0.3.
    PAM authentication module to transparently add passwords to a Kerberos 5
    database.
 
-   Copyright (C) Steve Langasek 2000
+   Copyright (C) Steve Langasek 2000-2001
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -33,7 +33,7 @@
 #include "pam_krb5_migrate.h"
 
 #define DEFAULT_KEYTAB	"/etc/security/pam_krb5.keytab"
-
+#define MIN_UID 100
 
 /* Cleanup function for pam data. */
 static void _cleanup(pam_handle_t * pamh, void *x, int error_status)
@@ -157,6 +157,8 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags,
     kadm5_policy_ent_rec defpol;
     long mask = 0;
     void *handle = NULL;
+    uid_t min_uid = MIN_UID;
+    struct passwd *pwent = NULL;
 
 
     /* Get a few bytes so we can pass our return value to pam_sm_setcred(). */
@@ -201,6 +203,8 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags,
                 retval = PAM_BUF_ERR;
                 goto cleanup;
             }
+        } else if (!strncmp(*argv, "min_uid=", 8)) {
+            min_uid = atoi(*argv+8);
         } else {
             _log_err(LOG_ERR, pamh, "unrecognized option [%s]", *argv);
             retval = PAM_SYSTEM_ERR;
@@ -264,7 +268,7 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags,
 #ifndef KADMIN_LOCAL
     /* Get default keytab if none was provided. */
     if (!keytab_name) {
-        keytab_name = _xstrdup(pamh, "/etc/security/pam_krb5.keytab");
+        keytab_name = _xstrdup(pamh, DEFAULT_KEYTAB);
         if (keytab_name == NULL) {
             retval = PAM_BUF_ERR;
             goto cleanup;
@@ -309,6 +313,15 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags,
     }
     if (debug) {
         _log_err(LOG_DEBUG, pamh, "username [%s] obtained", lname);
+    }
+
+    pwent = getpwnam(lname);
+    if (pwent != NULL && pwent->pw_uid < min_uid) {
+       if (debug) {
+           _log_err(LOG_DEBUG, pamh, "username [%s] has uid less than %d, not creating a principal", lname, min_uid);
+       }
+       retval = PAM_IGNORE;
+       goto cleanup;
     }
 
     name = malloc(strlen(lname) + strlen(def_realm) + 2);

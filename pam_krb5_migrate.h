@@ -1,10 +1,10 @@
 /*
    Kerberos 5 migration module
-   Version 0.0.1.
+   Version 0.0.3.
    PAM authentication module to transparently add passwords to a Kerberos 5
    database.
 
-   Copyright (C) Steve Langasek 2000
+   Copyright (C) Steve Langasek 2000-2001
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -25,7 +25,9 @@
 #define _PAM_KRB5_MIGRATE_H
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <pwd.h>
 #include <krb5.h>
 #include <kadm5/admin.h>
 

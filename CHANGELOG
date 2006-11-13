@@ -1,3 +1,8 @@
+version 0.0.3  11 Sep 2001
+   - make sure we use the DEFAULT_KEYTAB define, since we have it available.
+   - add support for min_uid option, submitted by Gordon Tetlow
+     <gordont@gnf.org>
+
 version 0.0.2  26 Apr 2001
    - fix bug in cleanup handling; now that we're passing in the right
      kind of void pointer, we shouldn't be leaving temp files around
