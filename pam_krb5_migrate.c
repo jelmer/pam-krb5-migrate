@@ -407,7 +407,8 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags,
 
 cleanup:
 
-    kadm5_destroy(&handle);
+    kadm5_flush(handle);
+    kadm5_destroy(handle);
     krb5_free_context(context);
     if (princstr)
         free(princstr);

@@ -45,7 +45,7 @@ Principal "pam_migrate/hostname@REALM" created.
 
 Then extract the key for this principal to a keytab for use on the host:
 
-kadmin.local:   ktadd -k /var/kerberos/krb5kdc/hostname.keytab pam/migrate/hostname
+kadmin.local:   ktadd -k /var/kerberos/krb5kdc/hostname.keytab pam_migrate/hostname
 Entry for principal pam_migrate/hostname with kvno 4, encryption type DES cbc mode with CRC-32 added to keytab
 WRFILE:/var/kerberos/krb5kdc/hostname.keytab.
 Entry for principal pam_migrate/hostname with kvno 4, encryption type Triple DES cbc mode raw added to keytab

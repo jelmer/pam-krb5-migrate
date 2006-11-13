@@ -1,0 +1,5 @@
+version 0.0.2  26 Apr 2001
+   - fix bug in cleanup handling; now that we're passing in the right
+     kind of void pointer, we shouldn't be leaving temp files around
+     any more.
+   - fixed typo to the default principal name in the INSTALL file.
