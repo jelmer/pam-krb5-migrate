@@ -1,0 +1,77 @@
+BUILDING AND INSTALLATION
+
+There are two different ways to build pam_krb5_migrate.  The first mode
+generates a module which will update a Kerberos database on the local
+machine; the second mode generates a module which updates against a remote
+KDC using the Kerberos5 kadmin protocol.
+
+Ideally, I would like to combine both sets of functionality in a single
+binary; however, the client and server kadmin libraries export the same
+API, and ld doesn't like using two different functions of the same name.
+:)  If anybody knows of a good, portable way to do this, let me know.
+
+The default is to use the kadmin protocol to talk to the KDC remotely.  If
+you need the local option, edit the Makefile and uncomment the LIBS and
+KLOCAL lines near the top, commenting out the settings for the remote
+option.
+
+At a later date, you will be able to control this using a configure
+script.  Alternatively, if people think that it would be useful, I may
+have it build both types of module under different names.  This is an
+alpha release, and I'm always open to suggestion.
+
+After editing the makefile, run 'make all install' to build the module and
+install it in /lib/security/.
+
+
+SETTING UP THE PAM_KRB5_MIGRATE MODULE
+
+If you do not already have a KDC, you will need to set up a Kerberos
+database for your realm.  See the Kerberos V5 Installation Guide for
+details.
+
+If you will be updating against a live database from a machine other than
+the KDC, or if you intend to run the migration module on more than one
+machine at a time, you will need to use kadmin (or kadmin.local) to create
+a special Kerberos principal called pam_migrate/<hostname>, where
+<hostname> is the full domain name (FQDN) of the host where you're
+deploying the pam module.
+
+% kadmin.local
+Authenticating as principal admin/admin@REALM with password.
+kadmin.local:  addprinc -randkey pam_migrate/hostname@REALM
+WARNING: no policy specified for pam_migrate/hostname@REALM; defaulting to no policy
+Principal "pam_migrate/hostname@REALM" created.
+
+Then extract the key for this principal to a keytab for use on the host:
+
+kadmin.local:   ktadd -k /var/kerberos/krb5kdc/hostname.keytab pam/migrate/hostname
+Entry for principal pam_migrate/hostname with kvno 4, encryption type DES cbc mode with CRC-32 added to keytab
+WRFILE:/var/kerberos/krb5kdc/hostname.keytab.
+Entry for principal pam_migrate/hostname with kvno 4, encryption type Triple DES cbc mode raw added to keytab
+WRFILE:/var/kerberos/krb5kdc/hostname.keytab.
+
+
+This principal should *only* have permission to add principals to the
+database and should have no other permissions.  To give the principal
+permission to add to the database, add this line to the top of your
+kadm5.acl file:
+
+pam_migrate/hostname@REALM		a
+
+You can also give all principals of the form pam_migrate/<hostname>
+permission to add by using the line
+
+pam_migrate/*@REALM			a
+
+You will then need to copy your new keytab (securely!) to the appropriate
+machine and install it as /etc/security/pam_krb5.keytab.  Like all
+keytabs, this file should be readable only by root and should be treated
+with the utmost care when transferring it to the destination host.
+*Anyone with access to this keytab will be able to create new Kerberos
+principals in your realm.*
+
+If you plan to add principals to a local database, you won't need to do
+any of the above.  So long as the pam module has access to write to the
+database (generally only if the calling application runs as root), you
+will be able to edit without authentication.

@@ -1,0 +1,14 @@
+#%PAM-1.0
+# Sample login configuration file for Linux-PAM, using krb5_migrate
+# For equivalent Solaris config, put the service name at the beginning
+# of the line and add to /etc/pam.conf.
+auth       required         /lib/security/pam_securetty.so
+auth       required         /lib/security/pam_nologin.so
+auth       sufficient       /lib/security/pam_krb5.so
+auth       requisite        /lib/security/pam_unix.so
+auth       optional         /lib/security/pam_krb5_migrate.so
+account    required         /lib/security/pam_unix.so
+password   required         /lib/security/pam_cracklib.so
+password   required         /lib/security/pam_unix.so shadow nullok use_authtok
+password   optional         /lib/security/pam_krb5.so use_authtok use_first_pass
+session    required         /lib/security/pam_unix.so
