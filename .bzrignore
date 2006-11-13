@@ -1,0 +1,3 @@
+debian/files
+debian/libpam-krb5-migrate-heimdal
+debian/libpam-krb5-migrate-heimdal.substvars
