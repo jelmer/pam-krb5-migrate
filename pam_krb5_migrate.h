@@ -30,6 +30,7 @@
 #include <pwd.h>
 #include <krb5.h>
 #include <kadm5/admin.h>
+#include <kadm5/kadm5_err.h>
 
 #ifndef LINUX
 
