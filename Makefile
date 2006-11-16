@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS += `krb5-config --cflags krb5 kadm-client`
+CFLAGS += -Wall `krb5-config --cflags krb5 kadm-client`
 LDFLAGS += -Bsymbolic -x -shared
 
 # Uncomment these lines to build the module with local db support.
