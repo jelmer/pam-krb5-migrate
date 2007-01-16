@@ -1,0 +1,56 @@
+#!/usr/bin/make -f
+# Based on debian/rules from libpam-heimdal
+# This is the debhelper compatability version to use.
+export DH_COMPAT=5
+
+build: build-stamp
+build-stamp: 
+	dh_testdir
+	
+	# Add here commands to compile the package.
+	$(MAKE) CFLAGS=-fPIC
+	
+	touch build-stamp
+
+clean: clean1 
+clean1:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+	
+	# Add here commands to clean up after the build process.
+	[ ! -f Makefile ] || $(MAKE) distclean
+	
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k
+	dh_installdirs
+	
+	# Add here commands to install the package into debian/tmp.
+	dh_install
+
+# Build architecture-independent files here.
+binary-indep: build install
+# We have nothing to do by default.
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installdocs
+	dh_installchangelogs 
+	dh_installexamples
+	dh_strip
+	dh_compress
+	dh_fixperms
+	dh_installdeb
+	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install

@@ -1,0 +1,5 @@
+libpam-krb5-migrate (0.0.4-1) experimental; urgency=low
+
+  * Initial release. 
+
+ -- Jelmer Vernooij <jelmer@samba.org>  Sat, 11 Nov 2006 13:58:49 +0100
