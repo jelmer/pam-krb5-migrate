@@ -4,3 +4,7 @@ config.log
 config.status
 configure
 tags
+build-stamp
+debian/files
+debian/libpam-krb5-migrate-heimdal.substvars
+debian/libpam-krb5-migrate-heimdal
