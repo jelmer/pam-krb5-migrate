@@ -20,10 +20,12 @@ pam_krb5_migrate.so: pam_krb5_migrate.o
 pam_krb5_migrate.o: pam_krb5_migrate.c
 	$(CC) -o $@ -c $< $(KLOCAL) $(CFLAGS)
 
+check:: 
+
 install: all
 	install -m755 -o root pam_krb5_migrate.so /lib/security/
 
 clean:
-	-rm *.o *.so
+	-rm *.o *.so test
 
 distclean: clean

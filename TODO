@@ -1,0 +1,5 @@
+- update to work with vanilla mit kerberos
+- add testsuite 
+ - bootstrap a KDC somehow? Would be nice if heimdal had 
+ a way to build a KDC using a simple command.
+ - use a simple implementation that unit tests using check
