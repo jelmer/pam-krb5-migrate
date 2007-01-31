@@ -1,16 +1,18 @@
-Source: libpam-krb5-migrate
+Source: libpam-krb5-migrate-heimdal
 Section: net
 Priority: optional
 Maintainer: Jelmer Vernooij <jelmer@samba.org>
 Standards-Version: 3.7.2.0
 Build-Depends: debhelper (>= 5.0.2), heimdal-dev (>= 0.3e-1), libpam0g-dev
 
-Package: libpam-krb5-migrate
+Package: libpam-krb5-migrate-heimdal
 Architecture: any
 Depends: ${shlibs:Depends}
-Description: PAM modules for migrating to Kerberos
+Description: PAM module for migrating to Kerberos
  A stackable authentication module that takes a username and password from an 
  earlier module in the stack and attempts to transparently add the user to a 
  Kerberos realm using the Kerberos 5 kadmin service. The module can be used to 
  ease the administrative burdens of migrating a large installed userbase from 
  pre-existing authentication methods to a Kerberos-based setup. 
+ .
+ This package allows updating the database of a remote Heimdal server.

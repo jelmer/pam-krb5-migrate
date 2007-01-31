@@ -1,4 +1,4 @@
-libpam-krb5-migrate (0.0.4-1) experimental; urgency=low
+libpam-krb5-migrate-heimdal (0.0.5-1) unstable; urgency=low
 
   * Initial release. 
 
