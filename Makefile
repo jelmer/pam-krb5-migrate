@@ -7,8 +7,8 @@ LDFLAGS += -Bsymbolic -x -shared
 
 # Uncomment these lines to build the module with remote kadmin support.
 KLOCAL =
-LIBS  += `krb5-config --libs krb5 kadm-client`
-LIBS  += -ldl -lc
+LIBS  += `$(KRB5CONFIG) --libs krb5 kadm-client`
+LIBS  += -lc
 
 all: pam_krb5_migrate.so
 
@@ -23,6 +23,9 @@ check::
 
 install: all
 	install -m755 -o root pam_krb5_migrate.so /lib/security/
+
+tags:
+	ctags -R .
 
 clean:
 	rm -f *.o *.so test
