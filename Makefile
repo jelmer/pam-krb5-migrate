@@ -31,4 +31,4 @@ clean:
 	rm -f *.o *.so test
 
 distclean:: clean
-	rm -rf autom4te.cache config.log config.status configure
+	rm -rf autom4te.cache config.log config.status Makefile.settings
