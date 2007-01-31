@@ -149,7 +149,9 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags,
     int retval, *ret_data = NULL;
 
     int debug = 0, quiet = flags & PAM_SILENT;
+#ifndef KADMIN_LOCAL
     int local = 1, remote = 1;
+#endif
     char *def_realm = NULL;
     char *cp;
     char *name = NULL, *pass = NULL;
@@ -173,7 +175,7 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags,
     /* Initialize the params struct for kadmin. */
     memset((char *) &params, 0, sizeof(params));
 
-    if (kret = krb5_init_context(&context)) {
+    if ((kret = krb5_init_context(&context))) {
         _log_err(LOG_ERR, pamh, "%s while initializing krb5 library",
                  error_message(kret));
 	retval = PAM_SYSTEM_ERR;
@@ -244,9 +246,9 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags,
     if (princstr == NULL) {
         /* We want a principal using the service name (pam_migrate) and
            the hostname. */
-        if (kret = krb5_sname_to_principal(context, NULL,
+        if ((kret = krb5_sname_to_principal(context, NULL,
                                            "pam_migrate", KRB5_NT_SRV_HST,
-                                           &princ))
+                                           &princ)))
         {
             _log_err(LOG_ERR, pamh, "%s creating host service principal",
                      error_message(kret));
@@ -255,7 +257,7 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags,
         }
 
         /* Can we extract a string from the result? */
-        if (kret = krb5_unparse_name(context, princ, &princstr)) {
+        if ((kret = krb5_unparse_name(context, princ, &princstr))) {
             _log_err(LOG_ERR, pamh, "%s while canonicalizing principal name",
                      error_message(kret));
              krb5_free_principal(context, princ);
