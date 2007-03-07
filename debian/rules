@@ -10,10 +10,7 @@ configure-stamp:
 build: build-stamp
 build-stamp: configure
 	dh_testdir
-	
-	# Add here commands to compile the package.
 	$(MAKE) CFLAGS=-fPIC
-	
 	touch build-stamp
 
 clean: clean1 
@@ -21,10 +18,7 @@ clean1:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp
-	
-	# Add here commands to clean up after the build process.
-	[ ! -f Makefile ] || $(MAKE) distclean
-	
+	$(MAKE) distclean
 	dh_clean
 
 install: build
@@ -32,15 +26,9 @@ install: build
 	dh_testroot
 	dh_clean -k
 	dh_installdirs
-	
-	# Add here commands to install the package into debian/tmp.
 	dh_install
 
-# Build architecture-independent files here.
 binary-indep: build install
-# We have nothing to do by default.
-
-# Build architecture-dependent files here.
 binary-arch: build install
 	dh_testdir
 	dh_testroot
