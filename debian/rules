@@ -1,7 +1,5 @@
 #!/usr/bin/make -f
 # Based on debian/rules from libpam-heimdal
-# This is the debhelper compatability version to use.
-export DH_COMPAT=5
 
 configure: configure-stamp
 configure-stamp:
