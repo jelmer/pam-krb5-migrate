@@ -1,5 +1,0 @@
-libpam-krb5-migrate-heimdal (0.0.5-1) unstable; urgency=low
-
-  * Initial release. 
-
- -- Jelmer Vernooij <jelmer@samba.org>  Sat, 11 Nov 2006 13:58:49 +0100
