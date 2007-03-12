@@ -1,0 +1,51 @@
+pam-krb5-migrate for Debian
+---------------------------
+This package has been built with support for accessing the Kerberos 
+administration over the network.
+
+SETTING UP THE PAM_KRB5_MIGRATE MODULE
+
+If you do not already have a KDC, you will need to set up a Kerberos
+database for your realm.  See the Kerberos V5 Installation Guide for
+details.
+
+If you will be updating against a live database from a machine other than
+the KDC, or if you intend to run the migration module on more than one
+machine at a time, you will need to use kadmin (or kadmin.local) to create
+a special Kerberos principal called pam_migrate/<hostname>, where
+<hostname> is the full domain name (FQDN) of the host where you're
+deploying the pam module.
+
+% kadmin
+Authenticating as principal admin/admin@REALM with password.
+kadmin.local:  add --use-defaults -r pam_migrate/hostname@REALM
+WARNING: no policy specified for pam_migrate/hostname@REALM; defaulting to no policy
+Principal "pam_migrate/hostname@REALM" created.
+
+Then extract the key for this principal to a keytab for use on the host:
+
+kadmin.local:   ext -k /var/kerberos/krb5kdc/hostname.keytab pam_migrate/hostname
+Entry for principal pam_migrate/hostname with kvno 4, encryption type DES cbc mode with CRC-32 added to keytab
+WRFILE:/var/kerberos/krb5kdc/hostname.keytab.
+Entry for principal pam_migrate/hostname with kvno 4, encryption type Triple DES cbc mode raw added to keytab
+WRFILE:/var/kerberos/krb5kdc/hostname.keytab.
+
+
+This principal should *only* have permission to add principals to the
+database and should have no other permissions.  To give the principal
+permission to add to the database, add this line to the top of your
+kadmind.acl file:
+
+pam_migrate/hostname@REALM		add
+
+You can also give all principals of the form pam_migrate/<hostname>
+permission to add by using the line
+
+pam_migrate/*@REALM			add
+
+You will then need to copy your new keytab (securely!) to the appropriate
+machine and install it as /etc/security/pam_krb5.keytab.  Like all
+keytabs, this file should be readable only by root and should be treated
+with the utmost care when transferring it to the destination host.
+*Anyone with access to this keytab will be able to create new Kerberos
+principals in your realm.*
