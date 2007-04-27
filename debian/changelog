@@ -1,10 +1,10 @@
-libpam-krb5-migrate-heimdal (0.0.6-1) unstable; urgency=low
+pam-krb5-migrate-heimdal (0.0.6-1) unstable; urgency=low
 
   * New upstream release.
 
  -- Jelmer Vernooij <jelmer@samba.org>  Fri, 27 Apr 2007 22:15:01 +0200
 
-libpam-krb5-migrate-heimdal (0.0.5-1) unstable; urgency=low
+pam-krb5-migrate-heimdal (0.0.5-1) unstable; urgency=low
 
   * Initial release. (Closes: #413820)
 
