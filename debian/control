@@ -1,4 +1,4 @@
-Source: libpam-krb5-migrate-heimdal
+Source: pam-krb5-migrate
 Section: net
 Priority: optional
 Maintainer: Jelmer Vernooij <jelmer@samba.org>
