@@ -1,3 +1,7 @@
+verison 0.0.6  27 Apr 2007
+   - switch to autoconf
+   - fixed crash bug when used with Heimdal Kerberos
+
 version 0.0.5  13 Nov 2006
    - new maintainer (Jelmer Vernooij <jelmer@samba.org>)
    - add manual page
