@@ -1,5 +1,7 @@
 -include Makefile.settings
 LDFLAGS += -Bsymbolic -x -shared
+CFLAGS += `$(KRB5CONFIG) --cflags krb5 kadm-client`
+CFLAGS += -fPIC
 
 # Uncomment these lines to build the module with local db support.
 #KLOCAL = -DKADMIN_LOCAL
