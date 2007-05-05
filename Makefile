@@ -24,6 +24,8 @@ pam_krb5_migrate.o: pam_krb5_migrate.c
 check:: 
 
 install: all
+	install -d $(DESTDIR)/lib/security
+	install -d $(DESTDIR)$(mandir)/man7
 	install -m755 -o root pam_krb5_migrate.so $(DESTDIR)/lib/security/
 	install -m0644 -o root pam_krb5_migrate.7 $(DESTDIR)$(mandir)/man7
 
