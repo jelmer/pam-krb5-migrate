@@ -1,4 +1,4 @@
--include Makefile.settings
+include Makefile.settings
 LDFLAGS += -Bsymbolic -x -shared
 CFLAGS += `$(KRB5CONFIG) --cflags krb5 kadm-client`
 CFLAGS += -fPIC
