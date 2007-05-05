@@ -1,6 +1,8 @@
 #!/usr/bin/make -f
 # Based on debian/rules from libpam-heimdal
 
+DESTDIR=$(CURDIR)/debian/tmp
+
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
@@ -25,8 +27,8 @@ install: build
 	dh_testroot
 	dh_clean -k
 	dh_installdirs
-	$(MAKE) install
-	dh_install
+	$(MAKE) install DESTDIR=$(DESTDIR)
+	dh_install --show-missing --fail-missing --sourcedir=$(DESTDIR)
 
 binary-indep: build install
 binary-arch: build install
