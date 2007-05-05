@@ -2,3 +2,6 @@ CC = @CC@
 CFLAGS = @CFLAGS@
 LIBS = @LIBS@
 KRB5CONFIG = @KRB5CONFIG@
+prefix = @prefix@
+datarootdir = @datarootdir@
+mandir = @mandir@
