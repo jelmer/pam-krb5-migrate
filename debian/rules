@@ -28,7 +28,7 @@ install: build
 	dh_clean -k
 	dh_installdirs
 	$(MAKE) install DESTDIR=$(DESTDIR)
-	dh_install --show-missing --fail-missing --sourcedir=$(DESTDIR)
+	dh_install --list-missing --fail-missing --sourcedir=$(DESTDIR)
 
 binary-indep: build install
 binary-arch: build install
