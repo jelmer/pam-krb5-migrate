@@ -6,7 +6,7 @@ DESTDIR=$(CURDIR)/debian/tmp
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	./configure
+	./configure --prefix=/usr
 	touch configure-stamp
 
 build: build-stamp
