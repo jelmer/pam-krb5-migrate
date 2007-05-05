@@ -1,7 +1,7 @@
 This package was Debianized by Jelmer Vernooij <jelmer@samba.org>
 on Sat Nov 11 14:01:19 CET 2006.
 
-The upstream source was downloaded from ftp://ftp.netexpress.net/pub/pam/pam_krb5_migrate.tgz
+The upstream source was downloaded from http://samba.org/~jelmer/pam_krb5_migrate.
 
 Copyright (c) Steve Langasek <vorlon@netexpress.net>
 
