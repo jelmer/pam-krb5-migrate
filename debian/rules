@@ -13,8 +13,7 @@ build-stamp: configure
 	$(MAKE) CFLAGS=-fPIC
 	touch build-stamp
 
-clean: clean1 
-clean1:
+clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp
