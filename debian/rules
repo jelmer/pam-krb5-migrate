@@ -1,10 +1,12 @@
 #!/usr/bin/make -f
 # Based on debian/rules from libpam-heimdal
 
+DESTDIR=$(CURDIR)/debian/tmp
+
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	./configure
+	./configure --prefix=/usr
 	touch configure-stamp
 
 build: build-stamp
@@ -13,11 +15,10 @@ build-stamp: configure
 	$(MAKE) CFLAGS=-fPIC
 	touch build-stamp
 
-clean: clean1 
-clean1:
+clean:
 	dh_testdir
 	dh_testroot
-	rm -f build-stamp
+	rm -f build-stamp configure-stamp
 	$(MAKE) distclean
 	dh_clean
 
@@ -26,7 +27,8 @@ install: build
 	dh_testroot
 	dh_clean -k
 	dh_installdirs
-	dh_install
+	$(MAKE) install DESTDIR=$(DESTDIR)
+	dh_install --list-missing --fail-missing --sourcedir=$(DESTDIR)
 
 binary-indep: build install
 binary-arch: build install

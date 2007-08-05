@@ -1,1 +1,2 @@
-pam_krb5_migrate.so lib/security/
+usr/share/man/man7/pam_krb5_migrate.7
+lib/security/pam_krb5_migrate.so

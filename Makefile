@@ -1,5 +1,7 @@
--include Makefile.settings
+include Makefile.settings
 LDFLAGS += -Bsymbolic -x -shared
+CFLAGS += `$(KRB5CONFIG) --cflags krb5 kadm-client`
+CFLAGS += -fPIC
 
 # Uncomment these lines to build the module with local db support.
 #KLOCAL = -DKADMIN_LOCAL
@@ -22,7 +24,10 @@ pam_krb5_migrate.o: pam_krb5_migrate.c
 check:: 
 
 install: all
-	install -m755 -o root pam_krb5_migrate.so /lib/security/
+	install -d $(DESTDIR)/lib/security
+	install -d $(DESTDIR)$(mandir)/man7
+	install -m755 -o root pam_krb5_migrate.so $(DESTDIR)/lib/security/
+	install -m0644 -o root pam_krb5_migrate.7 $(DESTDIR)$(mandir)/man7
 
 tags:
 	ctags -R .
