@@ -48,4 +48,4 @@ binary-arch: build install
 	dh_builddeb -a
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install
+.PHONY: configure build clean binary-indep binary-arch binary install 
