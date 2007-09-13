@@ -24,7 +24,7 @@ check::
 install: all
 	install -m755 -o root pam_krb5_migrate.so /lib/security/
 
-tags:
+ctags:
 	ctags -R .
 
 clean:
