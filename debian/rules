@@ -37,7 +37,7 @@ binary-arch: build install
 	dh_installdocs -a README CHANGELOG
 	dh_installchangelogs -a
 	dh_installexamples -a
-	dh_installman -a pam_krb5_migrate.5
+	dh_installman -a pam_krb5_migrate.7
 	dh_strip -a
 	dh_compress -a
 	dh_fixperms -a
