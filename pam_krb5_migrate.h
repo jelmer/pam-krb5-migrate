@@ -27,6 +27,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/syslog.h>
 #include <pwd.h>
 #include <krb5.h>
 #include <kadm5/admin.h>

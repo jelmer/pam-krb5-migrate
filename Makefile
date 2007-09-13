@@ -29,7 +29,7 @@ install: all
 	install -m755 -o root pam_krb5_migrate.so $(DESTDIR)/lib/security/
 	install -m0644 -o root pam_krb5_migrate.7 $(DESTDIR)$(mandir)/man7
 
-tags:
+ctags:
 	ctags -R .
 
 clean:
