@@ -34,8 +34,8 @@ binary-indep: build install
 binary-arch: build install
 	dh_testdir
 	dh_testroot
-	dh_installdocs -a README CHANGELOG
-	dh_installchangelogs -a
+	dh_installdocs -a README 
+	dh_installchangelogs -a CHANGELOG
 	dh_installexamples -a
 	dh_installman -a pam_krb5_migrate.7
 	dh_strip -a
