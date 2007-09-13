@@ -1,3 +1,6 @@
+Version 0.0.7  13 Sep 2007
+   - fix include of sys/syslog.h
+
 verison 0.0.6  27 Apr 2007
    - switch to autoconf
    - fixed crash bug when used with Heimdal Kerberos
