@@ -19,7 +19,7 @@ clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp configure-stamp
-	-$(MAKE) distclean
+	[ ! -f Makefile.settings ] || $(MAKE) distclean
 	dh_clean
 
 install: build
