@@ -1,3 +1,6 @@
+Version 0.0.8  30 Nov 2007
+   - fix build with newer versions of Heimdal. 
+
 Version 0.0.7  13 Sep 2007
    - fix include of sys/syslog.h
 
