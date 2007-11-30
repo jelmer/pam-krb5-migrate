@@ -1,3 +1,10 @@
+pam-krb5-migrate (0.0.8-1) unstable; urgency=low
+
+  * New upstream release. 
+    + Fixes compatibility with newer Heimdal versions. (Closes: #445579)
+
+ -- Jelmer Vernooij <jelmer@samba.org>  Fri, 30 Nov 2007 21:43:53 +0100
+
 pam-krb5-migrate (0.0.7-1) unstable; urgency=low
 
   * Include syslog.h. (Closes: #441683)

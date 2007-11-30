@@ -42,13 +42,4 @@
 
 #include <security/pam_modules.h>
 
-#ifndef False
-#define False (0)
-#endif
-
-#ifndef True
-#define True (1)
-#endif
-
-
 #endif /* _PAM_KRB5_MIGRATE_H */

@@ -19,7 +19,7 @@ pam_krb5_migrate.so: pam_krb5_migrate.o
 	  pam_krb5_migrate.o $(LIBS)
 
 pam_krb5_migrate.o: pam_krb5_migrate.c
-	$(CC) -o $@ -c $< $(KLOCAL) $(CFLAGS)
+	$(CC) -o $@ -c $< $(KLOCAL) $(CFLAGS) $(DEFS)
 
 check:: 
 
