@@ -1,6 +1,5 @@
 /*
    Kerberos 5 migration module
-   Version 0.0.3.
    PAM authentication module to transparently add passwords to a Kerberos 5
    database.
 
@@ -381,6 +380,7 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags,
         goto cleanup;
     }
 
+#ifdef HAVE_KADM5_GET_POLICY
     if (!kadm5_get_policy(handle, "default", &defpol)) {
         if (debug) {
             _log_err(LOG_DEBUG, pamh,
@@ -397,6 +397,7 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags,
                      name);
         }
     }
+#endif
     mask &= ~KADM5_POLICY_CLR;
 
     mask |= KADM5_PRINCIPAL;
