@@ -1,6 +1,7 @@
 include Makefile.settings
 LDFLAGS += -Bsymbolic -x -shared
 CFLAGS += `$(KRB5CONFIG) --cflags krb5 kadm-client`
+CFLAGS += $(COM_ERR_CFLAGS)
 CFLAGS += -fPIC
 
 # Uncomment these lines to build the module with local db support.
@@ -10,6 +11,7 @@ CFLAGS += -fPIC
 # Uncomment these lines to build the module with remote kadmin support.
 KLOCAL =
 LIBS  += `$(KRB5CONFIG) --libs krb5 kadm-client`
+LIBS += $(COM_ERR_LIBS)
 LIBS  += -lc
 
 all: pam_krb5_migrate.so
