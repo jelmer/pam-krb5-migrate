@@ -5,7 +5,7 @@ Maintainer: Jelmer Vernooij <jelmer@samba.org>
 Standards-Version: 3.7.3.0
 Build-Depends: debhelper (>= 5.0.2), heimdal-dev (>= 1.0.0), libpam-dev, pkg-config, comerr-dev
 Vcs-Bzr: http://people.samba.org/bzr/jelmer/pam_krb5_migrate/debian
-XS-DM-Upload-Allowed: yes
+DM-Upload-Allowed: yes
 
 Package: libpam-krb5-migrate-heimdal
 Architecture: any
