@@ -17,7 +17,7 @@ LIBS  += -lc
 all: pam_krb5_migrate.so
 
 pam_krb5_migrate.so: pam_krb5_migrate.o
-	$(CC) -Wl,-z defs -Wl,-Bsymbolic -x -shared -o pam_krb5_migrate.so \
+	$(CC) -Wl,-z,defs -Wl,-Bsymbolic -Wl,-x -shared -o pam_krb5_migrate.so \
 	  pam_krb5_migrate.o $(LIBS)
 
 pam_krb5_migrate.o: pam_krb5_migrate.c
