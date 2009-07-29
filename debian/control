@@ -1,11 +1,10 @@
 Source: pam-krb5-migrate
 Section: net
 Priority: optional
-Maintainer: Jelmer Vernooij <jelmer@samba.org>
-Standards-Version: 3.7.3.0
+Maintainer: Jelmer Vernooij <jelmer@debian.org>
+Standards-Version: 3.8.2
 Build-Depends: debhelper (>= 5.0.2), heimdal-dev (>= 1.0.0), libpam-dev, pkg-config, comerr-dev
-Vcs-Bzr: http://people.samba.org/bzr/jelmer/pam_krb5_migrate/debian
-DM-Upload-Allowed: yes
+Vcs-Bzr: http://people.samba.org/bzr/jelmer/pam_krb5_migrate/unstable
 
 Package: libpam-krb5-migrate-heimdal
 Architecture: any
