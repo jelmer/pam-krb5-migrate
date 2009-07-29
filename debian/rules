@@ -28,7 +28,10 @@ install: build
 	dh_clean -k
 	dh_installdirs
 	$(MAKE) install DESTDIR=$(DESTDIR)
+	mkdir -p $(DESTDIR)/usr/share/pam-configs
+	install -m 0644 debian/libpam-krb5-migrate.pam-config $(DESTDIR)/usr/share/pam-configs/krb5-migrate
 	dh_install --list-missing --fail-missing --sourcedir=$(DESTDIR)
+
 
 binary-indep: build install
 binary-arch: build install

@@ -2,8 +2,9 @@ pam-krb5-migrate (0.0.8+bzr39-1) unstable; urgency=low
 
   * Bump standards version to 3.8.2.
   * New upstream snapshot.
+  * Install pam-auth-update profile.
 
- -- Jelmer Vernooij <jelmer@debian.org>  Wed, 29 Jul 2009 17:42:14 +0200
+ -- Jelmer Vernooij <jelmer@debian.org>  Wed, 29 Jul 2009 19:26:18 +0200
 
 pam-krb5-migrate (0.0.8-2) unstable; urgency=low
 
