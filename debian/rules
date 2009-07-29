@@ -29,7 +29,7 @@ install: build
 	dh_installdirs
 	$(MAKE) install DESTDIR=$(DESTDIR)
 	mkdir -p $(DESTDIR)/usr/share/pam-configs
-	install -m 0644 debian/libpam-krb5-migrate.pam-config $(DESTDIR)/usr/share/pam-configs/krb5-migrate
+	install -m 0644 debian/libpam-krb5-migrate-heimdal.pam-config $(DESTDIR)/usr/share/pam-configs/krb5-migrate-heimdal
 	dh_install --list-missing --fail-missing --sourcedir=$(DESTDIR)
 
 
