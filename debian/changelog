@@ -1,3 +1,11 @@
+pam-krb5-migrate (0.0.9-1) unstable; urgency=low
+
+  * Change section to admin.
+  * New upstream release.
+   + Includes proper configure file. (Closes: #539203)
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Thu, 30 Jul 2009 12:02:28 +0200
+
 pam-krb5-migrate (0.0.8+bzr39-1) unstable; urgency=low
 
   * Bump standards version to 3.8.2.

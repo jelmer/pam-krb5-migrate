@@ -1,5 +1,5 @@
 Source: pam-krb5-migrate
-Section: net
+Section: admin
 Priority: optional
 Maintainer: Jelmer Vernooij <jelmer@debian.org>
 Standards-Version: 3.8.2
