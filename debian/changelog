@@ -1,7 +1,9 @@
 pam-krb5-migrate (0.0.10-1) UNRELEASED; urgency=low
 
   * New upstream snapshot.
+   + Fixes compatibility with newer versions of Heimdal. LP: #832901 
   * Bump standards version to 3.9.2 (no changes).
+  * Depend on heimdal-multidev rather than heimdal-dev.
 
  -- Jelmer Vernooij <jelmer@debian.org>  Thu, 15 Sep 2011 18:08:21 +0200
 
