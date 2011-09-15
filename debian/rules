@@ -6,7 +6,8 @@ DESTDIR=$(CURDIR)/debian/tmp
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	CFLAGS=-fPIC KRB5CONFIG=krb5-config.heimdal ./configure --prefix=/usr
+	dh_autoreconf
+	KRB5CONFIG=krb5-config.heimdal CFLAGS=-fPIC ./configure --prefix=/usr
 	touch configure-stamp
 
 build: build-stamp

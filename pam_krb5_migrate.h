@@ -32,7 +32,11 @@
 #include <pwd.h>
 #include <krb5.h>
 #include <kadm5/admin.h>
+#ifdef HAVE_KADM5_KADM_ERR_H
+#include <kadm5/kadm_err.h>
+#else
 #include <kadm5/kadm5_err.h>
+#endif
 
 #ifndef LINUX
 
