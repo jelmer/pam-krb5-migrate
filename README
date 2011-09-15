@@ -7,7 +7,7 @@ large installed userbase from pre-existing authentication methods to a
 Kerberos-based setup.
 
 The most current version of this module can always be found at
-ftp://ftp.netexpress.net/pub/pam/
+http://samba.org/~jelmer/pam_krb5_migrate
 
 For sample usage in a module stack, see the enclosed login.pam file.
 
