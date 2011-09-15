@@ -15,7 +15,6 @@ AC_COMPILE_CHECK([number of arguments to kadm5_free_policy_ent],
 #include <stdio.h>
 #include <krb5.h>
 #include <kadm5/admin.h>
-#include <kadm5/kadm5_err.h>
 ],
 [ kadm5_free_policy_ent(NULL); ],
 [
@@ -23,6 +22,23 @@ AC_MSG_RESULT(1)
 AC_DEFINE(KADM5_FREE_POLICY_ENT_1_ARG)],
 [ AC_MSG_RESULT(2) ]
 )
+
+AC_COMPILE_CHECK([number of arguments to kadm5_init_with_skey],
+[
+#include <stdio.h>
+#include <krb5.h>
+#include <kadm5/admin.h>
+],
+[
+kadm5_init_with_skey(NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+],
+[
+AC_MSG_RESULT(7)
+AC_DEFINE(KADM5_INIT_WITH_SKEY_7_ARGS)],
+[
+ AC_MSG_RESULT(9)
+])
+
 LIBS="$save_LIBS"
 AC_CONFIG_FILES([Makefile.settings])
 AC_OUTPUT

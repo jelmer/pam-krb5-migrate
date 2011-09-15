@@ -290,12 +290,23 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags,
     }
 #endif
 
+#ifdef KADM5_INIT_WITH_SKEY_7_ARGS
     kret = kadm5_init_with_skey(princstr, keytab_name,
                                     KADM5_ADMIN_SERVICE,
                                     &params,
                                     KADM5_STRUCT_VERSION,
                                     KADM5_API_VERSION_2,
                                     &handle);
+#else
+    kret = kadm5_init_with_skey(context,
+                                princstr, keytab_name,
+                                KADM5_ADMIN_SERVICE,
+                                &params,
+                                KADM5_STRUCT_VERSION,
+                                KADM5_API_VERSION_2,
+                                NULL, &handle);
+#endif
+
     free(princstr);
     princstr = NULL;
 
