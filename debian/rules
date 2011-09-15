@@ -6,13 +6,13 @@ DESTDIR=$(CURDIR)/debian/tmp
 configure: configure-stamp
 configure-stamp:
 	dh_testdir
-	./configure --prefix=/usr
+	CFLAGS=-fPIC KRB5CONFIG=krb5-config.heimdal ./configure --prefix=/usr
 	touch configure-stamp
 
 build: build-stamp
 build-stamp: configure
 	dh_testdir
-	$(MAKE) CFLAGS=-fPIC
+	$(MAKE)
 	touch build-stamp
 
 clean:

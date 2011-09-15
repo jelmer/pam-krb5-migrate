@@ -1,3 +1,9 @@
+pam-krb5-migrate (0.0.10-1) UNRELEASED; urgency=low
+
+  * New upstream snapshot.
+
+ -- Jelmer Vernooij <jelmer@debian.org>  Thu, 15 Sep 2011 17:14:13 +0200
+
 pam-krb5-migrate (0.0.9-1) unstable; urgency=low
 
   * Change section to admin.
