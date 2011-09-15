@@ -1,4 +1,4 @@
-AC_INIT(pam-krb5-migrate, 0.0.9, [jelmer@samba.org])
+AC_INIT(pam-krb5-migrate, 0.0.10, [jelmer@samba.org])
 AC_PROG_CC
 AC_ARG_VAR(KRB5CONFIG, [Path to krb5-config script])
 AC_PATH_PROGS(KRB5CONFIG, $ac_cv_env_KRB5CONFIG_value, krb5-config krb5-config.heimdal)
