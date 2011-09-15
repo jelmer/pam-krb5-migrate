@@ -1,6 +1,9 @@
 Version 0.0.10	15 Sep 2011
    - cope with kadm5_free_policy_ent having a different number of arguments in
      Heimdal.
+   - cope with kadm5_init_with_skey having a different number of arguments
+     in MIT Kerberos.
+   - support kadm_err.h header used by MIT in addition to kadm5_err.h.
    - allow overriding KRB5CONFIG environment variable, useful when
      there are multiple Kerberos versions on the system.
 
