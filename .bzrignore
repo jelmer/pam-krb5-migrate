@@ -9,3 +9,4 @@ debian/files
 debian/libpam-krb5-migrate-heimdal.substvars
 debian/libpam-krb5-migrate-heimdal
 configure-stamp
+aclocal.m4
