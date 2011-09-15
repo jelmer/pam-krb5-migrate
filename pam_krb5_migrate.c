@@ -4,6 +4,7 @@
    database.
 
    Copyright (C) Steve Langasek 2000-2001
+   Copyright (C) Jelmer Vernooij 2006
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -389,7 +390,11 @@ int pam_sm_authenticate(pam_handle_t *pamh, int flags,
         }
         newprinc.policy = "default";
         mask |= KADM5_POLICY;
+#if KADM5_FREE_POLICY_ENT_1_ARG
+        (void) kadm5_free_policy_ent(&defpol);
+#else
         (void) kadm5_free_policy_ent(handle, &defpol);
+#endif
     } else {
         if (debug) {
             _log_err(LOG_DEBUG, pamh,

@@ -1,3 +1,9 @@
+Version 0.0.10	15 Sep 2011
+   - cope with kadm5_free_policy_ent having a different number of arguments in
+     Heimdal.
+   - allow overriding KRB5CONFIG environment variable, useful when
+     there are multiple Kerberos versions on the system.
+
 Version 0.0.9	30 Jul 2009
    - fix syntax errors in man pages.
    - link against com_err to avoid unresolved symbols
