@@ -2,7 +2,7 @@ Source: pam-krb5-migrate
 Section: admin
 Priority: optional
 Maintainer: Jelmer Vernooij <jelmer@debian.org>
-Standards-Version: 3.9.2
+Standards-Version: 3.9.3
 Build-Depends: comerr-dev,
                debhelper (>= 5.0.2),
                dh-autoreconf,
