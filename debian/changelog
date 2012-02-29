@@ -1,4 +1,4 @@
-pam-krb5-migrate (0.0.10-2) UNRELEASED; urgency=low
+pam-krb5-migrate (0.0.10-2) unstable; urgency=low
 
   * Bump standards version to 3.9.3.
   * Use debhelper 7.
