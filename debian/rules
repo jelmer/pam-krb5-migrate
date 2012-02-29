@@ -1,55 +1,13 @@
 #!/usr/bin/make -f
-# Based on debian/rules from libpam-heimdal
 
-DESTDIR=$(CURDIR)/debian/tmp
+%:
+	dh --with autoreconf $*
 
-configure: configure-stamp
-configure-stamp:
-	dh_testdir
-	dh_autoreconf
+override_dh_auto_configure:
 	KRB5CONFIG=krb5-config.heimdal CFLAGS=-fPIC ./configure --prefix=/usr
-	touch configure-stamp
 
-build: build-stamp
-build-stamp: configure
-	dh_testdir
-	$(MAKE)
-	touch build-stamp
-
-clean:
-	dh_testdir
-	dh_testroot
-	rm -f build-stamp configure-stamp
+override_dh_auto_clean:
 	[ ! -f Makefile.settings ] || $(MAKE) distclean
-	dh_clean
 
-install: build
-	dh_testdir
-	dh_testroot
-	dh_clean -k
-	dh_installdirs
-	$(MAKE) install DESTDIR=$(DESTDIR)
-	mkdir -p $(DESTDIR)/usr/share/pam-configs
-	install -m 0644 debian/libpam-krb5-migrate-heimdal.pam-config $(DESTDIR)/usr/share/pam-configs/krb5-migrate-heimdal
-	dh_install --list-missing --fail-missing --sourcedir=$(DESTDIR)
-
-
-binary-indep: build install
-binary-arch: build install
-	dh_testdir
-	dh_testroot
-	dh_installdocs -a README 
+override_dh_installchangelogs:
 	dh_installchangelogs -a CHANGELOG
-	dh_installexamples -a
-	dh_installman -a pam_krb5_migrate.7
-	dh_strip -a
-	dh_compress -a
-	dh_fixperms -a
-	dh_installdeb -a
-	dh_shlibdeps -a
-	dh_gencontrol -a
-	dh_md5sums -a
-	dh_builddeb -a
-
-binary: binary-indep binary-arch
-.PHONY: configure build clean binary-indep binary-arch binary install 

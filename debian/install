@@ -1,3 +1,1 @@
-lib/security/pam_krb5_migrate.so
-usr/share/man/man7/pam_krb5_migrate.7
-usr/share/pam-configs/krb5-migrate-heimdal
+debian/libpam-krb5-migrate-heimdal.pam-config /usr/share/pam-configs/krb5-migrate-heimdal

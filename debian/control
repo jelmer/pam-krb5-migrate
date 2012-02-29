@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Jelmer Vernooij <jelmer@debian.org>
 Standards-Version: 3.9.3
 Build-Depends: comerr-dev,
-               debhelper (>= 5.0.2),
+               debhelper (>= 5.0.70~),
                dh-autoreconf,
                heimdal-dev (>= 1.0.0) | heimdal-multidev (>= 1.4.0+git20110124.dfsg.1-2),
                libpam-dev,
