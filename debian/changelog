@@ -2,8 +2,9 @@ pam-krb5-migrate (0.0.10-2) UNRELEASED; urgency=low
 
   * Bump standards version to 3.9.3.
   * Use debhelper 7.
+  * Use parseable copyright file format.
 
- -- Jelmer Vernooij <jelmer@debian.org>  Wed, 29 Feb 2012 13:51:20 +0100
+ -- Jelmer Vernooij <jelmer@debian.org>  Wed, 29 Feb 2012 13:58:04 +0100
 
 pam-krb5-migrate (0.0.10-1) unstable; urgency=low
 
