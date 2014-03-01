@@ -1,5 +1,6 @@
-pam-krb5-migrate (0.0.10-2) unstable; urgency=low
+pam-krb5-migrate (0.0.10-2) UNRELEASED; urgency=medium
 
+  * Fix syntax error in copyright file.
   * Bump standards version to 3.9.3.
   * Use debhelper 7.
   * Use parseable copyright file format.
