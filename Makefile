@@ -1,5 +1,5 @@
 include Makefile.settings
-LDFLAGS += -Bsymbolic -x -shared
+LDFLAGS += -Wl,-Bsymbolic -Wl,-x -shared
 CFLAGS += `$(KRB5CONFIG) --cflags krb5 kadm-client`
 CFLAGS += $(COM_ERR_CFLAGS)
 CFLAGS += -fPIC
@@ -17,7 +17,7 @@ LIBS  += -lc
 all: pam_krb5_migrate.so
 
 pam_krb5_migrate.so: pam_krb5_migrate.o
-	$(CC) -Wl,-z,defs -Wl,-Bsymbolic -Wl,-x -shared -o pam_krb5_migrate.so \
+	$(CC) -Wl,-z,defs $(LDFLAGS) -o pam_krb5_migrate.so \
 	  pam_krb5_migrate.o $(LIBS)
 
 pam_krb5_migrate.o: pam_krb5_migrate.c
