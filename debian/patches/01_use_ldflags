@@ -18,3 +18,15 @@ index 0ca5179..67a3176 100644
  	  pam_krb5_migrate.o $(LIBS)
  
  pam_krb5_migrate.o: pam_krb5_migrate.c
+diff --git a/Makefile.settings.in b/Makefile.settings.in
+index e25450c..c9b2602 100644
+--- a/Makefile.settings.in
++++ b/Makefile.settings.in
+@@ -2,6 +2,7 @@ CC = @CC@
+ CFLAGS = @CFLAGS@
+ DEFS = @DEFS@
+ LIBS = @LIBS@
++LDFLAGS = @LDFLAGS@
+ KRB5CONFIG = @KRB5CONFIG@
+ COM_ERR_CFLAGS = @COM_ERR_CFLAGS@
+ COM_ERR_LIBS = @COM_ERR_LIBS@
