@@ -9,7 +9,7 @@ Build-Depends: comerr-dev,
                heimdal-dev (>= 1.0.0) | heimdal-multidev (>= 1.4.0+git20110124.dfsg.1-2),
                libpam-dev,
                pkg-config
-Vcs-Git: git://git.debian.org/users/jelmer/pam-krb5-migrate.git
+Vcs-Git: git://anonscm.debian.org/users/jelmer/pam-krb5-migrate.git -b unstable
 
 Package: libpam-krb5-migrate-heimdal
 Architecture: any
