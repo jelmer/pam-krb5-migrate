@@ -6,7 +6,7 @@ Standards-Version: 3.9.5
 Build-Depends: comerr-dev,
                debhelper (>= 5.0.70~),
                dh-autoreconf,
-               heimdal-dev (>= 1.0.0) | heimdal-multidev (>= 1.4.0+git20110124.dfsg.1-2),
+               heimdal-multidev,
                libpam-dev,
                pkg-config
 Vcs-Git: git://anonscm.debian.org/users/jelmer/pam-krb5-migrate.git -b unstable
