@@ -1,1 +1,14 @@
 *~
+*.debhelper.log
+heimdal
+mit
+debian/autoreconf.before
+debian/autoreconf.after
+aclocal.m4
+autom4te.cache
+debian/tmp
+debian/libpam-krb5-migrate-heimdal/
+debian/libpam-krb5-migrate-mit/
+*.substvars
+configure
+debian/files

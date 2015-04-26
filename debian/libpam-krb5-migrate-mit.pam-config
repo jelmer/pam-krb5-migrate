@@ -1,0 +1,8 @@
+Name: Kerberos password synchronization (MIT)
+Default: yes
+Priority: 0
+Auth-Type: Additional
+Auth-Initial:
+	optional			pam_krb5_migrate_mit.so
+Auth-Final:
+	optional			pam_krb5_migrate_mit.so

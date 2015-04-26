@@ -1,8 +1,8 @@
-Name: Kerberos password synchronization
+Name: Kerberos password synchronization (Heimdal)
 Default: yes
 Priority: 0
 Auth-Type: Additional
 Auth-Initial:
-	optional			pam_krb5_migrate.so
+	optional			pam_krb5_migrate_heimdal.so
 Auth-Final:
-	optional			pam_krb5_migrate.so
+	optional			pam_krb5_migrate_heimdal.so
