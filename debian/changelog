@@ -1,6 +1,7 @@
 pam-krb5-migrate (0.0.11-3) UNRELEASED; urgency=medium
 
   * Install login.pam example file. Closes: #687960
+  * Bump standards version to 3.9.6 (no changes).
 
  -- Jelmer Vernooij <jelmer@debian.org>  Sat, 26 Jul 2014 18:57:57 +0200
 
