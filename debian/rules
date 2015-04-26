@@ -14,8 +14,8 @@ CFLAGS += -fPIC
 
 override_dh_auto_configure:
 	mkdir -p heimdal mit
-	cd heimdal && $(shell dpkg-buildflags --export=configure) KRB5CONFIG=krb5-config.heimdal CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" ../configure --prefix=/usr
-	cd mit && $(shell dpkg-buildflags --export=configure) KRB5CONFIG=krb5-config.mit CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)"  ../configure --prefix=/usr
+	cd heimdal && $(shell dpkg-buildflags --export=configure) KRB5CONFIG=krb5-config.heimdal CFLAGS="$(CFLAGS) $(CPPFLAGS)" ../configure --prefix=/usr
+	cd mit && $(shell dpkg-buildflags --export=configure) KRB5CONFIG=krb5-config.mit CFLAGS="$(CFLAGS) $(CPPFLAGS)"  ../configure --prefix=/usr
 
 override_dh_auto_build:
 	ln -s ../Makefile heimdal/Makefile
