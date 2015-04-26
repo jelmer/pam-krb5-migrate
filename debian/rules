@@ -2,13 +2,20 @@
 
 export DESTDIR=$(shell pwd)/debian/tmp
 
+CPPFLAGS:=$(shell dpkg-buildflags --get CPPFLAGS)
+CFLAGS:=$(shell dpkg-buildflags --get CFLAGS)
+CXXFLAGS:=$(shell dpkg-buildflags --get CXXFLAGS)
+LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
+
+CFLAGS += -fPIC
+
 %:
 	dh --with autoreconf $*
 
 override_dh_auto_configure:
 	mkdir -p heimdal mit
-	cd heimdal && $(shell dpkg-buildflags --export=configure) KRB5CONFIG=krb5-config.heimdal CFLAGS="-fPIC $(shell dpkg-buildflags --get CFLAGS)" ../configure --prefix=/usr
-	cd mit && $(shell dpkg-buildflags --export=configure) KRB5CONFIG=krb5-config.mit CFLAGS="-fPIC $(shell dpkg-buildflags --get CFLAGS)" ../configure --prefix=/usr
+	cd heimdal && $(shell dpkg-buildflags --export=configure) KRB5CONFIG=krb5-config.heimdal CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" ../configure --prefix=/usr
+	cd mit && $(shell dpkg-buildflags --export=configure) KRB5CONFIG=krb5-config.mit CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)"  ../configure --prefix=/usr
 
 override_dh_auto_build:
 	ln -s ../Makefile heimdal/Makefile
@@ -29,14 +36,11 @@ override_dh_auto_clean:
 
 override_dh_auto_install:
 	$(MAKE) -C heimdal install DESTDIR=$(DESTDIR)
-	mv $(DESTDIR)/lib/security/pam_krb5_migrate.so $(DESTDIR)/lib/security/pam_krb5_migrate_heimdal.so
-	mv $(DESTDIR)/usr/share/man/man7/pam_krb5_migrate.7 $(DESTDIR)/usr/share/man/man7/pam_krb5_migrate_heimdal.7
+	mv $(DESTDIR)/lib/security/pam_krb5_migrate.so heimdal/pam_krb5_migrate_heimdal.so
+	mv $(DESTDIR)/usr/share/man/man7/pam_krb5_migrate.7 heimdal/pam_krb5_migrate_heimdal.7
 	$(MAKE) -C mit install DESTDIR=$(DESTDIR)
-	mv $(DESTDIR)/lib/security/pam_krb5_migrate.so $(DESTDIR)/lib/security/pam_krb5_migrate_mit.so
-	mv $(DESTDIR)/usr/share/man/man7/pam_krb5_migrate.7 $(DESTDIR)/usr/share/man/man7/pam_krb5_migrate_mit.7
-
-override_dh_install:
-	dh_install --sourcedir=$(DESTDIR)
+	mv $(DESTDIR)/lib/security/pam_krb5_migrate.so mit/pam_krb5_migrate_mit.so
+	mv $(DESTDIR)/usr/share/man/man7/pam_krb5_migrate.7 mit/pam_krb5_migrate_mit.7
 
 override_dh_installchangelogs:
 	dh_installchangelogs -a CHANGELOG

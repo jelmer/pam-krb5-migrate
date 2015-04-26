@@ -3,7 +3,7 @@
 set -e
 
 if [ "$1" = "remove" ]; then
-	pam-auth-update --package --remove libpam-krb5-migrate-mit
+	pam-auth-update --package --remove krb5-migrate-mit
 fi
 
 #DEBHELPER#

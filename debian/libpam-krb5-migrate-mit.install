@@ -1,1 +1,2 @@
-lib/security/pam_krb5_migrate_mit.so
+mit/pam_krb5_migrate_mit.so /lib/security/pam_krb5_migrate_mit.so
+debian/libpam-krb5-migrate-mit.pam-config /usr/share/pam-configs/krb5-migrate-mit
