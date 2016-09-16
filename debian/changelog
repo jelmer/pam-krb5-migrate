@@ -1,3 +1,9 @@
+pam-krb5-migrate (0.0.11-3.1) UNRELEASED; urgency=medium
+
+  * Drop support for Heimdal. Closes: #837695
+
+ -- Jelmer Vernooĳ <jelmer@debian.org>  Fri, 16 Sep 2016 22:38:24 +0000
+
 pam-krb5-migrate (0.0.11-3) unstable; urgency=medium
 
   * Install login.pam example file. Closes: #687960
