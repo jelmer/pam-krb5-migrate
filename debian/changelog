@@ -1,4 +1,4 @@
-pam-krb5-migrate (0.0.11-3.1) UNRELEASED; urgency=medium
+pam-krb5-migrate (0.0.11-4) UNRELEASED; urgency=medium
 
   * Drop support for Heimdal. Closes: #837695
   * Bump standards version to 3.9.8 (no changes).
