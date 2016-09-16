@@ -1,2 +1,8 @@
 .debhelper/
 debhelper-build-stamp
+autoreconf.after
+autoreconf.before
+files
+libpam-krb5-migrate-mit.debhelper.log
+libpam-krb5-migrate-mit.substvars
+libpam-krb5-migrate-mit/
