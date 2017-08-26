@@ -13,15 +13,23 @@ For sample usage in a module stack, see the enclosed login.pam file.
 
 The following options are recognized by the module:
 
-debug                 turn debug logging on
-keytab=<file>         use alternate keytab for authentication
-                         (default is /etc/security/pam_krb5.keytab)
-min_uid=<uid>         don't add principals for uid's lower than <uid>.
-                         (default is 100)
-principal=<name>      use the key for <name> instead of the default
-                         pam_migrate/<hostname> key
-realm=<REALM>         update the database for a realm other than the
-                         default realm.
++-------------------+--------------------------------------------------+
+| option            | description                                      |
++===================+==================================================+
+| debug             | turn debug logging on                            |
++-------------------+--------------------------------------------------+
+| keytab=<file>     | use alternate keytab for authentication          |
+|                   | (default is `/etc/security/pam_krb5.keytab`)     |
++-------------------+--------------------------------------------------+
+| min_uid=<uid>     | don't add principals for uid's lower than <uid>. |
+|                   | (default is 100)                                 |
++-------------------+--------------------------------------------------+
+| principal=<name>  | use the key for <name> instead of the default    |
+|                   | pam_migrate/<hostname> key                       |
++-------------------+--------------------------------------------------+
+| realm=<REALM>     | update the database for a realm other than the   |
+|                   | default realm.                                   |
++-------------------+--------------------------------------------------+
 
 pam_krb5_migrate was written by Steve Langasek <vorlon@netexpress.net>.
 
