@@ -7,7 +7,7 @@ large installed userbase from pre-existing authentication methods to a
 Kerberos-based setup.
 
 The most current version of this module can always be found at
-http://samba.org/~jelmer/pam_krb5_migrate
+https://www.samba.org/~jelmer/pam_krb5_migrate
 
 For sample usage in a module stack, see the enclosed login.pam file.
 
@@ -25,6 +25,6 @@ realm=<REALM>         update the database for a realm other than the
 
 pam_krb5_migrate was written by Steve Langasek <vorlon@netexpress.net>.
 
-Please send questions and comments (and especially bugfixes) to the current 
-maintainer, Jelmer Vernooij <jelmer@samba.org>.
+Please send questions and comments (and especially bugfixes) to the current
+maintainer, Jelmer Vernooĳ <jelmer@samba.org>.
 
