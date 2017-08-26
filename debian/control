@@ -10,6 +10,7 @@ Build-Depends: comerr-dev,
                krb5-multidev,
                libpam-dev,
                pkg-config
+Homepage: https://jelmer.uk/code/pam-krb5-migrate/
 Vcs-Git: git://anonscm.debian.org/users/jelmer/pam-krb5-migrate.git -b unstable
 
 Package: libpam-krb5-migrate-heimdal
