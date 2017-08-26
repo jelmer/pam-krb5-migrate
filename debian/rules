@@ -10,7 +10,7 @@ LDFLAGS:=$(shell dpkg-buildflags --get LDFLAGS)
 CFLAGS += -fPIC
 
 %:
-	dh --with autoreconf $*
+	dh $* --with autoreconf
 
 override_dh_auto_configure:
 	mkdir -p heimdal mit
