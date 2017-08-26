@@ -3,6 +3,7 @@ pam-krb5-migrate (0.0.11-5) UNRELEASED; urgency=medium
   * Re-enable support for heimdal. Closes: #873147
   * Bump standards version to 4.0.0 (no changes).
   * Install sofiles to the correct paths. Closes: #873271
+  * Bump debhelper version to 9.
 
  -- Jelmer Vernooĳ <jelmer@debian.org>  Sat, 26 Aug 2017 02:03:27 +0000
 
