@@ -13,22 +13,31 @@ CFLAGS += -fPIC
 	dh --with autoreconf $*
 
 override_dh_auto_configure:
-	mkdir -p mit
+	mkdir -p heimdal mit
+	cd heimdal && $(shell dpkg-buildflags --export=configure) KRB5CONFIG=krb5-config.heimdal CFLAGS="$(CFLAGS) $(CPPFLAGS)" ../configure --prefix=/usr
 	cd mit && $(shell dpkg-buildflags --export=configure) KRB5CONFIG=krb5-config.mit CFLAGS="$(CFLAGS) $(CPPFLAGS)"  ../configure --prefix=/usr
 
 override_dh_auto_build:
+	ln -s ../Makefile heimdal/Makefile
 	ln -s ../Makefile mit/Makefile
 	ln -s ../pam_krb5_migrate.c mit
 	ln -s ../pam_krb5_migrate.h mit
+	ln -s ../pam_krb5_migrate.c heimdal
+	ln -s ../pam_krb5_migrate.h heimdal
+	ln -s ../pam_krb5_migrate.7 heimdal
 	ln -s ../pam_krb5_migrate.7 mit
+	$(MAKE) -C heimdal
 	$(MAKE) -C mit
 
 override_dh_auto_test::
 
 override_dh_auto_clean:
-	rm -rf mit
+	rm -rf mit heimdal
 
 override_dh_auto_install:
+	$(MAKE) -C heimdal install DESTDIR=$(DESTDIR)
+	mv $(DESTDIR)/lib/security/pam_krb5_migrate.so heimdal/pam_krb5_migrate_heimdal.so
+	mv $(DESTDIR)/usr/share/man/man7/pam_krb5_migrate.7 heimdal/pam_krb5_migrate_heimdal.7
 	$(MAKE) -C mit install DESTDIR=$(DESTDIR)
 	mv $(DESTDIR)/lib/security/pam_krb5_migrate.so mit/pam_krb5_migrate_mit.so
 	mv $(DESTDIR)/usr/share/man/man7/pam_krb5_migrate.7 mit/pam_krb5_migrate_mit.7
